@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iherb2026 Design Studio | Professional App Design</title>
+    <title>Magic! Studio | Professional App Design & Development</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -16,11 +16,7 @@
             --text-dim: #b0b0b0;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -32,18 +28,14 @@
 
         .gradient-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #050505 100%);
             z-index: -1;
         }
 
         .blob {
             position: absolute;
-            width: 500px;
-            height: 500px;
+            width: 500px; height: 500px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             filter: blur(80px);
             border-radius: 50%;
@@ -57,192 +49,73 @@
         }
 
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem 10%;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.5rem 10%;
             background: rgba(5, 5, 5, 0.8);
             backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
+            position: fixed; width: 100%; top: 0; z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
+            font-size: 1.5rem; font-weight: 800; letter-spacing: -1px;
             background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dim);
-            font-weight: 500;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
         header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 10%;
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center; padding: 0 10%;
         }
 
-        h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            line-height: 1.1;
-        }
-
-        h1 span {
-            display: block;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-desc {
-            font-size: 1.2rem;
-            color: var(--text-dim);
-            max-width: 600px;
-            margin-bottom: 2rem;
-        }
+        h1 { font-size: 4rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.1; }
+        h1 span { display: block; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
         .cta-btn {
-            padding: 1rem 2.5rem;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border: none;
-            border-radius: 50px;
-            color: white;
-            font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: 0.3s;
-            text-decoration: none;
-            box-shadow: 0 10px 20px rgba(0, 242, 255, 0.2);
+            padding: 1rem 2.5rem; background: linear-gradient(to right, var(--primary), var(--secondary));
+            border: none; border-radius: 50px; color: white; font-weight: 600;
+            cursor: pointer; transition: 0.3s; text-decoration: none;
+            display: inline-block; margin-top: 2rem;
         }
 
-        .cta-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 242, 255, 0.4);
-        }
-
-        section {
-            padding: 100px 10%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: var(--card-bg);
-            padding: 3rem 2rem;
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: 0.3s;
-            text-align: center;
-        }
-
-        .service-card:hover {
-            border-color: var(--primary);
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-10px);
-        }
-
-        .service-card i {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-        }
-
-        .service-card h3 {
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .service-card p {
-            color: var(--text-dim);
-        }
+        section { padding: 80px 10%; }
+        .section-title { text-align: center; margin-bottom: 4rem; }
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 1rem; }
 
         .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem;
         }
 
-        .portfolio-item {
-            position: relative;
-            border-radius: 24px;
-            overflow: hidden;
-            aspect-ratio: 16/10;
-            background: #111;
+        .portfolio-card {
+            background: var(--card-bg);
+            border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden; transition: 0.3s;
+            display: flex; flex-direction: column;
         }
 
-        .portfolio-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.6;
-            transition: 0.5s;
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1);
         }
 
-        .portfolio-item:hover .portfolio-img {
-            transform: scale(1.1);
-            opacity: 0.8;
+        .card-image {
+            height: 200px; width: 100%;
+            background: linear-gradient(45deg, #121212, #2a2a2a);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 3rem; color: var(--primary);
         }
 
-        .portfolio-content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            padding: 2rem;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9));
-            width: 100%;
-        }
+        .card-content { padding: 2rem; flex-grow: 1; }
+        .card-content h3 { margin-bottom: 1rem; font-size: 1.4rem; color: var(--primary); }
+        .card-content p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
 
-        footer {
-            padding: 50px 10%;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            color: var(--text-dim);
-        }
+        footer { padding: 50px 10%; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; color: var(--text-dim); }
 
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
-            nav { padding: 1rem 5%; }
-            .nav-links { display: none; }
-            .portfolio-grid { grid-template-columns: 1fr; }
+            section { padding: 60px 5%; }
         }
     </style>
 </head>
@@ -251,70 +124,55 @@
     <div class="blob"></div>
 
     <nav>
-        <div class="logo">iherb2026 studio</div>
-        <ul class="nav-links">
-            <li><a href="#services">服務範疇</a></li>
-            <li><a href="#portfolio">精選案例</a></li>
-            <li><a href="https://github.com/iherb2026">GitHub</a></li>
-        </ul>
-        <a href="mailto:contact@iherb2026.com" class="cta-btn" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">聯絡我們</a>
+        <div class="logo">Magic! Studio</div>
+        <a href="https://github.com/iherb2026" class="cta-btn" style="margin-top:0; padding: 0.6rem 1.5rem; font-size: 0.9rem;">GitHub</a>
     </nav>
 
     <header>
         <h1>打造數位的<span>未來感體驗</span></h1>
-        <p class="hero-desc">我們專注於極致的 UI/UX 設計與高效能 App 開發，將您的創意轉化為充滿科技感的數位產品。</p>
-        <a href="#portfolio" class="cta-btn">探索案例</a>
+        <p style="color: var(--text-dim); max-width: 600px;">由 Magic! 團隊開發，我們專注於極致的 UI/UX 設計與高效能 App 開發，將您的創意轉化為充滿科技感的數位產品。</p>
+        <a href="#portfolio" class="cta-btn">探索作品集</a>
     </header>
-
-    <section id="services">
-        <div class="section-title">
-            <h2>專業服務</h2>
-            <p style="color: var(--text-dim);">提供全方位的數位解決方案</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fas fa-mobile-alt"></i>
-                <h3>App 開發</h3>
-                <p>原生 iOS/Android 與跨平台 Flutter 解決方案，追求極致性能。</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-palette"></i>
-                <h3>UI/UX 設計</h3>
-                <p>以使用者為核心，打造直覺且美觀的現代化介面體驗。</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-rocket"></i>
-                <h3>品牌轉型</h3>
-                <p>協助企業導入數位基因，建立具備科技競爭力的品牌形象。</p>
-            </div>
-        </div>
-    </section>
 
     <section id="portfolio">
         <div class="section-title">
             <h2>精選案例</h2>
-            <p style="color: var(--text-dim);">我們過去引以為傲的作品集</p>
+            <p style="color: var(--text-dim);">來自 Google Play Store 的精選作品</p>
         </div>
         <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <div style="background: linear-gradient(45deg, #121212, #2a2a2a); width: 100%; height: 100%;"></div>
-                <div class="portfolio-content">
-                    <h3>Nexus FinTech App</h3>
-                    <p>現代化的金融交易管理系統</p>
+            <div class="portfolio-card">
+                <div class="card-image"><i class="fas fa-language"></i></div>
+                <div class="card-content">
+                    <h3>VocabSprint: CEFR Pro</h3>
+                    <p>VocabSprint: CEFR Pro – The Smartest Way to Master English Vocabulary. AI-driven vocabulary trainer mapped strictly to CEFR (A1-B2).</p>
                 </div>
             </div>
-            <div class="portfolio-item">
-                <div style="background: linear-gradient(45deg, #1a1a1a, #0d0d0d); width: 100%; height: 100%;"></div>
-                <div class="portfolio-content">
-                    <h3>Lumina AI Dashboard</h3>
-                    <p>智能數據分析與視覺化平台</p>
+            <div class="portfolio-card">
+                <div class="card-image"><i class="fas fa-puzzle-piece"></i></div>
+                <div class="card-content">
+                    <h3>AniDrop: Zoo Block Blast</h3>
+                    <p>Reactive Gravity System block puzzle. Experience classic logic meets dynamic gravity cascades and magical ocean power-ups!</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="card-image"><i class="fas fa-dragon"></i></div>
+                <div class="card-content">
+                    <h3>全民英檢神諭：中級GEPT</h3>
+                    <p>中級GEPT字彙冒險傳說，將單字複習與 RPG 冒險完美結合的 EdTech App。讓學習不再枯燥！</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="card-image"><i class="fas fa-shield-alt"></i></div>
+                <div class="card-content">
+                    <h3>GEPT初級單字，勇者傳說</h3>
+                    <p>勇者傳說，邊玩邊學 RPG。專為初學者設計，讓背單字變成一場史詩級的奇幻冒險。</p>
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>© 2026 iherb2026 Design Studio. Created with 💖 by your AI Assistant.</p>
+        <p>© 2026 Magic! Design Studio. Created with 💖 by your AI Assistant.</p>
     </footer>
 </body>
 </html>
