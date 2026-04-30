@@ -85,33 +85,79 @@
 
         .portfolio-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem;
+            /* Grid balance for odd numbers */
+            justify-content: center;
         }
 
         .portfolio-card {
             background: var(--card-bg);
             border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.1);
-            overflow: hidden; transition: 0.3s;
+            overflow: hidden; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s, border-color 0.4s;
             display: flex; flex-direction: column;
+            opacity: 0; transform: translateY(30px);
+        }
+        
+        .portfolio-card.visible {
+            opacity: 1; transform: translateY(0);
         }
 
         .portfolio-card:hover {
             transform: translateY(-10px);
             border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1);
+            box-shadow: 0 15px 40px rgba(0, 242, 255, 0.15);
         }
 
         .card-image {
-            height: 200px; width: 100%;
-            background: linear-gradient(45deg, #121212, #2a2a2a);
+            height: 180px; width: 100%;
+            background: linear-gradient(135deg, #121212 0%, #2a2a2a 100%);
             display: flex; align-items: center; justify-content: center;
-            font-size: 3rem; color: var(--primary);
+            position: relative;
         }
 
-        .card-content { padding: 2rem; flex-grow: 1; }
-        .card-content h3 { margin-bottom: 1rem; font-size: 1.4rem; color: var(--primary); }
-        .card-content p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+        /* Mockup style icon container */
+        .app-icon-mockup {
+            width: 80px; height: 80px;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2.2rem; color: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), inset 0 2px 0 rgba(255,255,255,0.2);
+            transition: 0.3s;
+        }
 
-        footer { padding: 50px 10%; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; color: var(--text-dim); }
+        .portfolio-card:hover .app-icon-mockup {
+            transform: scale(1.05);
+        }
+
+        .card-content { padding: 2rem; flex-grow: 1; position: relative; }
+        
+        .tags { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+        .tag { 
+            font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;
+            padding: 4px 10px; border-radius: 100px;
+            background: rgba(255,255,255,0.1); color: var(--primary);
+        }
+
+        .card-content h3 { margin-bottom: 0.8rem; font-size: 1.3rem; color: #fff; line-height: 1.3; }
+        .card-content p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 1.5rem; }
+
+        .google-play-badge {
+            width: 140px; height: auto;
+            margin-top: auto; opacity: 0.8; transition: 0.3s;
+        }
+        
+        .portfolio-card:hover .google-play-badge { opacity: 1; }
+
+        .cta-section {
+            padding: 80px 10%; text-align: center;
+            background: linear-gradient(0deg, rgba(0,242,255,0.05) 0%, transparent 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 40px;
+        }
+
+        .cta-section h2 { font-size: 2.5rem; margin-bottom: 1.5rem; }
+        
+        footer { padding: 40px 10%; border-top: 1px solid rgba(255, 255, 255, 0.05); text-align: center; color: var(--text-dim); font-size: 0.9rem; }
 
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
@@ -141,45 +187,81 @@
         </div>
         <div class="portfolio-grid">
             <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.chuyu.globalvocab', '_blank')" style="cursor: pointer;">
-                <div class="card-image"><i class="fas fa-language"></i></div>
+                <div class="card-image"><div class="app-icon-mockup"><i class="fas fa-language"></i></div></div>
                 <div class="card-content">
+                    <div class="tags"><span class="tag">EdTech</span><span class="tag">AI</span></div>
                     <h3>VocabSprint: CEFR Pro</h3>
-                    <p>VocabSprint: CEFR Pro – The Smartest Way to Master English Vocabulary. AI-driven vocabulary trainer mapped strictly to CEFR (A1-B2).</p>
+                    <p>The Smartest Way to Master English Vocabulary. AI-driven vocabulary trainer mapped strictly to CEFR (A1-B2).</p>
+                    <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
                 </div>
             </div>
             <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.chromablocks.cascade', '_blank')" style="cursor: pointer;">
-                <div class="card-image"><i class="fas fa-puzzle-piece"></i></div>
+                <div class="card-image"><div class="app-icon-mockup"><i class="fas fa-puzzle-piece"></i></div></div>
                 <div class="card-content">
+                    <div class="tags"><span class="tag">Game</span><span class="tag">Puzzle</span></div>
                     <h3>AniDrop: Zoo Block Blast</h3>
                     <p>Reactive Gravity System block puzzle. Experience classic logic meets dynamic gravity cascades and magical ocean power-ups!</p>
+                    <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
                 </div>
             </div>
             <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.chuyu.vocabrpg.intermediate', '_blank')" style="cursor: pointer;">
-                <div class="card-image"><i class="fas fa-dragon"></i></div>
+                <div class="card-image"><div class="app-icon-mockup"><i class="fas fa-dragon"></i></div></div>
                 <div class="card-content">
+                    <div class="tags"><span class="tag">EdTech</span><span class="tag">RPG</span></div>
                     <h3>GEPT Oracle: Intermediate</h3>
                     <p>An EdTech app that perfectly combines GEPT vocabulary review with an RPG adventure. Make learning fun and engaging!</p>
+                    <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
                 </div>
             </div>
             <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.chuyu.vocabrpg', '_blank')" style="cursor: pointer;">
-                <div class="card-image"><i class="fas fa-shield-alt"></i></div>
+                <div class="card-image"><div class="app-icon-mockup"><i class="fas fa-shield-alt"></i></div></div>
                 <div class="card-content">
+                    <div class="tags"><span class="tag">EdTech</span><span class="tag">RPG</span></div>
                     <h3>GEPT Elementary: Hero's Legend</h3>
                     <p>A gamified RPG for learning English. Designed for beginners to turn vocabulary memorization into an epic fantasy adventure.</p>
+                    <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
                 </div>
             </div>
             <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.metmuseum.audioguide', '_blank')" style="cursor: pointer;">
-                <div class="card-image"><i class="fas fa-headphones"></i></div>
+                <div class="card-image"><div class="app-icon-mockup"><i class="fas fa-headphones"></i></div></div>
                 <div class="card-content">
-                    <h3>MET Museum Audio Guide NYC</h3>
+                    <div class="tags"><span class="tag">Travel</span><span class="tag">Art</span></div>
+                    <h3>MET Museum Audio Guide</h3>
                     <p>Unlock the Secrets of The Metropolitan Museum of Art. Professional Audio Guide, Smart Route Planner, and Interactive Maps.</p>
+                    <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="cta-section">
+        <h2>Have an app idea?</h2>
+        <p style="color: var(--text-dim); max-width: 600px; margin: 0 auto 2rem;">Let Magic! Studio turn your vision into reality. We specialize in high-performance native apps and immersive UI/UX.</p>
+        <a href="mailto:iherbcy1@gmail.com" class="cta-btn">Start a Project with Us</a>
+    </section>
+
     <footer>
         <p>© 2026 Magic! Design Studio. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Scroll Animation Logic
+        document.addEventListener("DOMContentLoaded", () => {
+            const cards = document.querySelectorAll('.portfolio-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 100); // Staggered fade in
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach(card => observer.observe(card));
+        });
+    </script>
 </body>
 </html>
