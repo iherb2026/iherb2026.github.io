@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magic! Studio | Professional App Design & Development</title>
+    <title>Magic! Studio | Elegance in Digital Craftsmanship</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #00f2ff;
-            --secondary: #7000ff;
-            --bg: #050505;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --text: #ffffff;
-            --text-dim: #b0b0b0;
+            --primary-gold: #c5a059;
+            --secondary-gold: #e2c285;
+            --silver: #e0e0e0;
+            --bg: #fdfcf9;
+            --card-bg: #ffffff;
+            --text-main: #2a2a2a;
+            --text-muted: #666666;
+            --accent-gradient: linear-gradient(135deg, #c5a059 0%, #f1d592 50%, #c5a059 100%);
+            --silver-gradient: linear-gradient(135deg, #d1d1d1 0%, #f8f8f8 50%, #d1d1d1 100%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,240 +24,282 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
+            color: var(--text-main);
+            line-height: 1.7;
             overflow-x: hidden;
         }
 
-        .gradient-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #050505 100%);
+        /* Elegant Background Texture */
+        .bg-texture {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(circle at 2px 2px, rgba(197, 160, 89, 0.05) 1px, transparent 0);
+            background-size: 40px 40px;
             z-index: -1;
-        }
-
-        .blob {
-            position: absolute;
-            width: 500px; height: 500px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            filter: blur(80px);
-            border-radius: 50%;
-            opacity: 0.15;
-            animation: move 20s infinite alternate;
-        }
-
-        @keyframes move {
-            from { transform: translate(-10%, -10%); }
-            to { transform: translate(20%, 20%); }
         }
 
         nav {
             display: flex; justify-content: space-between; align-items: center;
             padding: 1.5rem 10%;
-            background: rgba(5, 5, 5, 0.8);
+            background: rgba(253, 252, 249, 0.95);
             backdrop-filter: blur(10px);
             position: fixed; width: 100%; top: 0; z-index: 100;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
         }
 
         .logo {
-            font-size: 1.5rem; font-weight: 800; letter-spacing: -1px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem; font-weight: 900;
+            background: var(--accent-gradient);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
         header {
-            height: 100vh; display: flex; flex-direction: column;
+            height: 85vh; display: flex; flex-direction: column;
             justify-content: center; align-items: center;
             text-align: center; padding: 0 10%;
+            background: radial-gradient(circle at center, rgba(226, 194, 133, 0.1) 0%, transparent 70%);
         }
 
-        h1 { font-size: 4rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.1; }
-        h1 span { display: block; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 4.5rem; font-weight: 900; margin-bottom: 1.5rem; color: #1a1a1a; letter-spacing: -1px; }
+        h1 span { display: block; color: var(--primary-gold); font-style: italic; }
+
+        .header-p { color: var(--text-muted); max-width: 700px; font-size: 1.1rem; margin-bottom: 2.5rem; }
 
         .cta-btn {
-            padding: 1rem 2.5rem; background: linear-gradient(to right, var(--primary), var(--secondary));
-            border: none; border-radius: 50px; color: white; font-weight: 600;
-            cursor: pointer; transition: 0.3s; text-decoration: none;
-            display: inline-block; margin-top: 2rem;
+            padding: 1.2rem 3rem; background: var(--accent-gradient);
+            border: none; border-radius: 4px; color: white; font-weight: 600;
+            cursor: pointer; transition: 0.4s; text-decoration: none;
+            box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3);
+            text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;
         }
 
-        section { padding: 80px 10%; }
-        .section-title { text-align: center; margin-bottom: 4rem; }
-        .section-title h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(197, 160, 89, 0.4);
+        }
+
+        section { padding: 100px 10%; }
+        
+        .category-intro {
+            max-width: 800px; margin: 0 auto 4rem; text-align: center;
+        }
+        
+        .category-intro h2 { 
+            font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 1rem; 
+            position: relative; display: inline-block;
+        }
+        
+        .category-intro h2::after {
+            content: ''; position: absolute; bottom: -10px; left: 25%; width: 50%; height: 2px;
+            background: var(--accent-gradient);
+        }
+
+        .category-intro p { font-size: 1.1rem; color: var(--text-muted); font-style: italic; }
 
         .portfolio-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem;
-            /* Grid balance for odd numbers */
-            justify-content: center;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem;
+            margin-bottom: 80px;
         }
 
         .portfolio-card {
             background: var(--card-bg);
-            border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.1);
-            overflow: hidden; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s, border-color 0.4s;
+            border-radius: 0; border: 1px solid rgba(197, 160, 89, 0.15);
+            overflow: hidden; transition: all 0.4s ease;
             display: flex; flex-direction: column;
-            opacity: 0; transform: translateY(30px);
-        }
-        
-        .portfolio-card.visible {
-            opacity: 1; transform: translateY(0);
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
         }
 
         .portfolio-card:hover {
             transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 15px 40px rgba(0, 242, 255, 0.15);
+            border-color: var(--primary-gold);
+            box-shadow: 0 20px 40px rgba(197, 160, 89, 0.15);
         }
 
         .card-image {
-            height: 180px; width: 100%;
-            background: linear-gradient(135deg, #121212 0%, #2a2a2a 100%);
+            height: 220px; width: 100%;
+            background: #f9f7f2;
             display: flex; align-items: center; justify-content: center;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+        }
+
+        .app-icon-container {
+            width: 100px; height: 100px;
+            background: white; border-radius: 22%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2.5rem; color: var(--primary-gold);
+            box-shadow: 0 8px 25px rgba(197, 160, 89, 0.2);
             position: relative;
         }
-
-        /* Mockup style icon container */
-        .app-icon-mockup {
-            width: 80px; height: 80px;
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
-            border-radius: 20px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 2.2rem; color: #fff;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), inset 0 2px 0 rgba(255,255,255,0.2);
-            transition: 0.3s;
-        }
-
-        .portfolio-card:hover .app-icon-mockup {
-            transform: scale(1.05);
-        }
-
-        .card-content { padding: 2rem; flex-grow: 1; position: relative; }
         
-        .tags { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
-        .tag { 
-            font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;
-            padding: 4px 10px; border-radius: 100px;
-            background: rgba(255,255,255,0.1); color: var(--primary);
+        .app-icon-container i {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        .card-content h3 { margin-bottom: 0.8rem; font-size: 1.3rem; color: #fff; line-height: 1.3; }
-        .card-content p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 1.5rem; }
+        .card-content { padding: 2.5rem; flex-grow: 1; }
+        
+        .tag { 
+            font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;
+            padding: 4px 12px; border-radius: 0;
+            border: 1px solid var(--primary-gold); color: var(--primary-gold);
+            margin-bottom: 1.5rem; display: inline-block;
+        }
+
+        .card-content h3 { font-family: 'Playfair Display', serif; margin-bottom: 1rem; font-size: 1.5rem; color: #1a1a1a; }
+        .card-content p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 2rem; }
 
         .google-play-badge {
-            width: 140px; height: auto;
-            margin-top: auto; opacity: 0.8; transition: 0.3s;
+            width: 130px; height: auto;
+            transition: 0.3s; filter: grayscale(1) opacity(0.7);
         }
         
-        .portfolio-card:hover .google-play-badge { opacity: 1; }
+        .portfolio-card:hover .google-play-badge { filter: grayscale(0) opacity(1); }
         
-        footer { padding: 40px 10%; border-top: 1px solid rgba(255, 255, 255, 0.05); text-align: center; color: var(--text-dim); font-size: 0.9rem; }
+        footer { 
+            padding: 60px 10%; background: #f4f1ea; 
+            border-top: 1px solid rgba(197, 160, 89, 0.2); 
+            text-align: center; color: var(--text-muted); 
+        }
 
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
+            h1 { font-size: 2.8rem; }
             section { padding: 60px 5%; }
+            .category-intro h2 { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
-    <div class="gradient-bg"></div>
-    <div class="blob"></div>
+    <div class="bg-texture"></div>
 
     <nav>
         <div class="logo">Magic! Studio</div>
-        <a href="mailto:iherbcy1@gmail.com" class="cta-btn" style="margin-top:0; padding: 0.6rem 1.5rem; font-size: 0.9rem;">Contact Us</a>
+        <a href="mailto:iherbcy1@gmail.com" class="cta-btn" style="padding: 0.7rem 1.8rem; font-size: 0.7rem;">Get in Touch</a>
     </nav>
 
     <header>
-        <h1>Crafting the<span>Digital Future</span></h1>
-        <p style="color: var(--text-dim); max-width: 600px;">Developed by the Magic! team, we specialize in high-end UI/UX design and high-performance app development, turning your vision into futuristic digital products.</p>
-        <a href="#portfolio" class="cta-btn">Explore Portfolio</a>
+        <h1>Define Your<span>Digital Legacy</span></h1>
+        <p class="header-p">Magic! Studio blends artistic vision with technical precision. We create bespoke digital experiences that don't just solve problems—they tell a story of excellence.</p>
+        <a href="#heritage" class="cta-btn">View Masterpieces</a>
     </header>
 
-    <section id="portfolio">
-        <div class="section-title">
-            <h2>Featured Portfolio</h2>
-            <p style="color: var(--text-dim);">Selected works from the Google Play Store</p>
+    <!-- Section 1: Museum Guides -->
+    <section id="heritage">
+        <div class="category-intro">
+            <span class="tag" style="border:none; padding:0; color:var(--primary-gold)">The Art Collection</span>
+            <h2>Global Heritage & Art</h2>
+            <p>Bringing the world's most prestigious museums to the palm of your hand. Our audio guides are designed to transform every visit into a profound cultural journey.</p>
         </div>
         <div class="portfolio-grid">
+            <!-- National Gallery -->
             <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.nationalgallery.audioguide', '_blank')" style="cursor: pointer;">
-                <div class="card-image"><div class="app-icon-mockup"><i class="fas fa-palette"></i></div></div>
+                <div class="card-image"><div class="app-icon-container"><i class="fas fa-palette"></i></div></div>
                 <div class="card-content">
-                    <div class="tags"><span class="tag">Travel</span><span class="tag">Art</span></div>
+                    <span class="tag">Curated Tour</span>
                     <h3>National Gallery Audio Guide</h3>
-                    <p>Explore the National Gallery's masterpieces with expert audio commentary. Discover the stories behind world-famous paintings with ease.</p>
+                    <p>Immerse yourself in the National Gallery's masterpieces with professional narration. Discover the soul of European painting through expert-led stories.</p>
                     <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
                 </div>
             </div>
-            <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.chuyu.globalvocab', '_blank')" style="cursor: pointer;">
-                <div class="card-image"><div class="app-icon-mockup"><i class="fas fa-language"></i></div></div>
-                <div class="card-content">
-                    <div class="tags"><span class="tag">EdTech</span><span class="tag">AI</span></div>
-                    <h3>VocabSprint: CEFR Pro</h3>
-                    <p>The Smartest Way to Master English Vocabulary. AI-driven vocabulary trainer mapped strictly to CEFR (A1-B2).</p>
-                    <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
-                </div>
-            </div>
-            <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.chromablocks.cascade', '_blank')" style="cursor: pointer;">
-                <div class="card-image"><div class="app-icon-mockup"><i class="fas fa-puzzle-piece"></i></div></div>
-                <div class="card-content">
-                    <div class="tags"><span class="tag">Game</span><span class="tag">Puzzle</span></div>
-                    <h3>AniDrop: Zoo Block Blast</h3>
-                    <p>Reactive Gravity System block puzzle. Experience classic logic meets dynamic gravity cascades and magical ocean power-ups!</p>
-                    <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
-                </div>
-            </div>
-            <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.chuyu.vocabrpg.intermediate', '_blank')" style="cursor: pointer;">
-                <div class="card-image"><div class="app-icon-mockup"><i class="fas fa-dragon"></i></div></div>
-                <div class="card-content">
-                    <div class="tags"><span class="tag">EdTech</span><span class="tag">RPG</span></div>
-                    <h3>GEPT Oracle: Intermediate</h3>
-                    <p>An EdTech app that perfectly combines GEPT vocabulary review with an RPG adventure. Make learning fun and engaging!</p>
-                    <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
-                </div>
-            </div>
-            <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.chuyu.vocabrpg', '_blank')" style="cursor: pointer;">
-                <div class="card-image"><div class="app-icon-mockup"><i class="fas fa-shield-alt"></i></div></div>
-                <div class="card-content">
-                    <div class="tags"><span class="tag">EdTech</span><span class="tag">RPG</span></div>
-                    <h3>GEPT Elementary: Hero's Legend</h3>
-                    <p>A gamified RPG for learning English. Designed for beginners to turn vocabulary memorization into an epic fantasy adventure.</p>
-                    <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
-                </div>
-            </div>
+            <!-- MET -->
             <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.metmuseum.audioguide', '_blank')" style="cursor: pointer;">
-                <div class="card-image"><div class="app-icon-mockup"><i class="fas fa-headphones"></i></div></div>
+                <div class="card-image"><div class="app-icon-container"><i class="fas fa-headphones"></i></div></div>
                 <div class="card-content">
-                    <div class="tags"><span class="tag">Travel</span><span class="tag">Art</span></div>
+                    <span class="tag">Smart Planning</span>
                     <h3>MET Museum Audio Guide</h3>
-                    <p>Unlock the Secrets of The Metropolitan Museum of Art. Professional Audio Guide, Smart Route Planner, and Interactive Maps.</p>
+                    <p>Unlock the secrets of The Met. Featuring high-fidelity audio, intelligent route planning, and interactive maps for a truly elite museum experience.</p>
                     <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
                 </div>
             </div>
+            <!-- Louvre -->
             <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.louvre.elite', '_blank')" style="cursor: pointer;">
-                <div class="card-image"><div class="app-icon-mockup"><i class="fas fa-university"></i></div></div>
+                <div class="card-image"><div class="app-icon-container"><i class="fas fa-university"></i></div></div>
                 <div class="card-content">
-                    <div class="tags"><span class="tag">Travel</span><span class="tag">Art</span></div>
-                    <h3>Louvre Museum Audio & Map Tour</h3>
-                    <p>Experience the world's most visited museum like an insider. Complete audio commentary, high-definition maps, and curated thematic routes.</p>
+                    <span class="tag">Premium Guide</span>
+                    <h3>Louvre Museum Elite Tour</h3>
+                    <p>Navigate the world's grandest museum with ease. Includes complete audio commentary and curated thematic routes for the discerning traveler.</p>
                     <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
                 </div>
             </div>
+            <!-- British Museum -->
             <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.britishmuseum.audioguide', '_blank')" style="cursor: pointer;">
-                <div class="card-image"><div class="app-icon-mockup"><i class="fas fa-landmark"></i></div></div>
+                <div class="card-image"><div class="app-icon-container"><i class="fas fa-landmark"></i></div></div>
                 <div class="card-content">
-                    <div class="tags"><span class="tag">Travel</span><span class="tag">Art</span></div>
-                    <h3>British Museum Audio Guide LDN</h3>
-                    <p>Discover the treasures of history at the British Museum. Comprehensive audio guide, expert highlights, and interactive maps for a seamless exploration.</p>
+                    <span class="tag">Historical Insight</span>
+                    <h3>British Museum Audio Guide</h3>
+                    <p>A comprehensive companion to the treasures of human history. Expert highlights and seamless navigation for the world-renowned London institution.</p>
                     <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
                 </div>
             </div>
-            <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.zenith.english.mastery', '_blank')" style="cursor: pointer;">
-                <div class="card-image"><div class="app-icon-mockup"><i class="fas fa-graduation-cap"></i></div></div>
+        </div>
+    </section>
+
+    <!-- Section 2: EdTech -->
+    <section id="edtech" style="background-color: #f9f7f2;">
+        <div class="category-intro">
+            <span class="tag" style="border:none; padding:0; color:var(--primary-gold)">The Knowledge Suite</span>
+            <h2>Intelligent Language Mastery</h2>
+            <p>Where AI meets pedagogy. Our language learning tools are engineered to accelerate fluency through personalized, high-performance training systems.</p>
+        </div>
+        <div class="portfolio-grid">
+            <!-- VocabSprint -->
+            <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.chuyu.globalvocab', '_blank')" style="cursor: pointer;">
+                <div class="card-image"><div class="app-icon-container"><i class="fas fa-language"></i></div></div>
                 <div class="card-content">
-                    <div class="tags"><span class="tag">Academic</span><span class="tag">AI</span></div>
+                    <span class="tag">AI Training</span>
+                    <h3>VocabSprint: CEFR Pro</h3>
+                    <p>The ultimate vocabulary accelerator. Mapped strictly to CEFR standards, using adaptive AI to ensure you master the right words at the right time.</p>
+                    <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
+                </div>
+            </div>
+            <!-- Zenith -->
+            <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.zenith.english.mastery', '_blank')" style="cursor: pointer;">
+                <div class="card-image"><div class="app-icon-container"><i class="fas fa-graduation-cap"></i></div></div>
+                <div class="card-content">
+                    <span class="tag">Elite Academic</span>
                     <h3>Zenith: Academic English</h3>
-                    <p>Conquer IELTS & TOEFL with AI-powered training. Master 5,000+ elite academic terms, paraphrasing, and collocations.</p>
+                    <p>Designed for IELTS & TOEFL candidates. Master 5,000+ elite academic terms with AI-powered paraphrasing and collocation training.</p>
+                    <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
+                </div>
+            </div>
+            <!-- GEPT Oracle -->
+            <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.chuyu.vocabrpg.intermediate', '_blank')" style="cursor: pointer;">
+                <div class="card-image"><div class="app-icon-container"><i class="fas fa-dragon"></i></div></div>
+                <div class="card-content">
+                    <span class="tag">Gamified Learning</span>
+                    <h3>GEPT Oracle: Intermediate</h3>
+                    <p>Experience the perfect fusion of test preparation and RPG adventure. Turn your GEPT review into an engaging quest for excellence.</p>
+                    <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
+                </div>
+            </div>
+            <!-- GEPT Elementary -->
+            <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.chuyu.vocabrpg', '_blank')" style="cursor: pointer;">
+                <div class="card-image"><div class="app-icon-container"><i class="fas fa-shield-alt"></i></div></div>
+                <div class="card-content">
+                    <span class="tag">Beginner Adventure</span>
+                    <h3>GEPT Elementary: Hero</h3>
+                    <p>An epic fantasy adventure designed for foundational learners. Transforming vocabulary memorization into a legendary heroic journey.</p>
+                    <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Games -->
+    <section id="games">
+        <div class="category-intro">
+            <span class="tag" style="border:none; padding:0; color:var(--primary-gold)">The Play Studio</span>
+            <h2>Creative Interactive Games</h2>
+            <p>Pushing the boundaries of casual gaming. Our titles combine innovative mechanics with stunning visuals for an unforgettable interactive experience.</p>
+        </div>
+        <div class="portfolio-grid" style="justify-content: center;">
+            <!-- AniDrop -->
+            <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.chromablocks.cascade', '_blank')" style="cursor: pointer; max-width: 400px; margin: 0 auto;">
+                <div class="card-image"><div class="app-icon-container"><i class="fas fa-puzzle-piece"></i></div></div>
+                <div class="card-content">
+                    <span class="tag">Innovation</span>
+                    <h3>AniDrop: Zoo Block Blast</h3>
+                    <p>Experience the Reactive Gravity System. A logic puzzle where dynamic cascades and magical power-ups redefine the block-blasting genre.</p>
                     <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
                 </div>
             </div>
@@ -262,26 +307,26 @@
     </section>
 
     <footer>
-        <p>© 2026 Magic! Design Studio. All rights reserved.</p>
+        <p>© 2026 Magic! Design Studio. <span style="color:var(--primary-gold)">Crafted for Excellence.</span></p>
     </footer>
 
     <script>
-        // Scroll Animation Logic
         document.addEventListener("DOMContentLoaded", () => {
-            const cards = document.querySelectorAll('.portfolio-card');
-            
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
+                entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        setTimeout(() => {
-                            entry.target.classList.add('visible');
-                        }, index * 100); // Staggered fade in
-                        observer.unobserve(entry.target);
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "translateY(0)";
                     }
                 });
             }, { threshold: 0.1 });
 
-            cards.forEach(card => observer.observe(card));
+            document.querySelectorAll('.portfolio-card').forEach(card => {
+                card.style.opacity = "0";
+                card.style.transform = "translateY(30px)";
+                card.style.transition = "all 0.6s cubic-bezier(0.23, 1, 0.32, 1)";
+                observer.observe(card);
+            });
         });
     </script>
 </body>
