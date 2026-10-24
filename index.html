@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magic! Studio | Elegance in Digital Craftsmanship</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-gold: #c5a059;
@@ -22,7 +22,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
             background-color: var(--bg);
             color: var(--text-main);
             line-height: 1.7;
@@ -39,18 +39,62 @@
 
         nav {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 1.5rem 10%;
+            padding: 1.3rem 10%;
             background: rgba(253, 252, 249, 0.95);
             backdrop-filter: blur(10px);
             position: fixed; width: 100%; top: 0; z-index: 100;
             border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            transition: all 0.3s ease;
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Playfair Display', 'Noto Serif TC', serif;
             font-size: 1.8rem; font-weight: 900;
             background: var(--accent-gradient);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            user-select: none;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        /* Language Switcher */
+        .lang-switch {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(197, 160, 89, 0.1);
+            border: 1px solid rgba(197, 160, 89, 0.35);
+            border-radius: 20px;
+            padding: 2px 4px;
+            gap: 2px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 16px;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.25s ease;
+        }
+
+        .lang-btn:hover {
+            color: var(--text-main);
+        }
+
+        .lang-btn.active {
+            background: var(--accent-gradient);
+            color: #1a1a1a;
+            box-shadow: 0 2px 6px rgba(197, 160, 89, 0.35);
+            font-weight: 700;
         }
 
         header {
@@ -60,7 +104,7 @@
             background: radial-gradient(circle at center, rgba(226, 194, 133, 0.1) 0%, transparent 70%);
         }
 
-        h1 { font-family: 'Playfair Display', serif; font-size: 4.5rem; font-weight: 900; margin-bottom: 1.5rem; color: #1a1a1a; letter-spacing: -1px; }
+        h1 { font-family: 'Playfair Display', 'Noto Serif TC', serif; font-size: 4.5rem; font-weight: 900; margin-bottom: 1.5rem; color: #1a1a1a; letter-spacing: -1px; }
         h1 span { display: block; color: var(--primary-gold); font-style: italic; }
 
         .header-p { color: var(--text-muted); max-width: 700px; font-size: 1.1rem; margin-bottom: 2.5rem; }
@@ -85,7 +129,7 @@
         }
         
         .category-intro h2 { 
-            font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 1rem; 
+            font-family: 'Playfair Display', 'Noto Serif TC', serif; font-size: 3rem; margin-bottom: 1rem; 
             position: relative; display: inline-block;
         }
         
@@ -146,7 +190,7 @@
             margin-bottom: 1.5rem; display: inline-block;
         }
 
-        .card-content h3 { font-family: 'Playfair Display', serif; margin-bottom: 1rem; font-size: 1.5rem; color: #1a1a1a; }
+        .card-content h3 { font-family: 'Playfair Display', 'Noto Serif TC', serif; margin-bottom: 1rem; font-size: 1.5rem; color: #1a1a1a; }
         .card-content p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 2rem; }
 
         .google-play-badge {
@@ -155,6 +199,32 @@
         }
         
         .portfolio-card:hover .google-play-badge { filter: grayscale(0) opacity(1); }
+
+        .featured-badge {
+            position: absolute; top: 16px; right: 16px;
+            background: var(--accent-gradient);
+            color: #1a1a1a; font-size: 0.65rem; font-weight: 700;
+            padding: 4px 10px; border-radius: 2px;
+            letter-spacing: 1.5px; text-transform: uppercase;
+            box-shadow: 0 2px 8px rgba(197, 160, 89, 0.3);
+            z-index: 2;
+        }
+
+        .web-app-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 9px 18px; background: #1a1a1a; color: #fdfcf9;
+            border-radius: 4px; font-size: 0.75rem; font-weight: 600;
+            letter-spacing: 1px; text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .web-app-badge i { font-size: 0.9rem; color: var(--secondary-gold); }
+        .portfolio-card:hover .web-app-badge {
+            background: var(--accent-gradient);
+            color: #1a1a1a;
+            box-shadow: 0 6px 16px rgba(197, 160, 89, 0.35);
+        }
+        .portfolio-card:hover .web-app-badge i { color: #1a1a1a; }
         
         footer { 
             padding: 60px 10%; background: #f4f1ea; 
@@ -163,6 +233,10 @@
         }
 
         @media (max-width: 768px) {
+            nav { padding: 1rem 5%; }
+            .logo { font-size: 1.4rem; }
+            .nav-right { gap: 0.8rem; }
+            .cta-btn { padding: 0.6rem 1.2rem !important; font-size: 0.65rem !important; }
             h1 { font-size: 2.8rem; }
             section { padding: 60px 5%; }
             .category-intro h2 { font-size: 2.2rem; }
@@ -174,30 +248,36 @@
 
     <nav>
         <div class="logo">Magic! Studio</div>
-        <a href="mailto:iherbcy1@gmail.com" class="cta-btn" style="padding: 0.7rem 1.8rem; font-size: 0.7rem;">Get in Touch</a>
+        <div class="nav-right">
+            <div class="lang-switch" role="group" aria-label="Language Selector">
+                <button class="lang-btn" data-lang="zh" onclick="setLanguage('zh')">繁中</button>
+                <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+            </div>
+            <a href="mailto:iherbcy1@gmail.com" class="cta-btn" style="padding: 0.7rem 1.8rem; font-size: 0.7rem;" data-i18n="getInTouch">Get in Touch</a>
+        </div>
     </nav>
 
     <header>
-        <h1>Define Your<span>Digital Legacy</span></h1>
-        <p class="header-p">Magic! Studio blends artistic vision with technical precision. We create bespoke digital experiences that don't just solve problems—they tell a story of excellence.</p>
-        <a href="#heritage" class="cta-btn">View Masterpieces</a>
+        <h1 data-i18n="heroTitle">Define Your<span>Digital Legacy</span></h1>
+        <p class="header-p" data-i18n="heroSubtitle">Magic! Studio blends artistic vision with technical precision. We create bespoke digital experiences that don't just solve problems—they tell a story of excellence.</p>
+        <a href="#heritage" class="cta-btn" data-i18n="viewMasterpieces">View Masterpieces</a>
     </header>
 
     <!-- Section 1: Museum Guides -->
     <section id="heritage">
         <div class="category-intro">
-            <span class="tag" style="border:none; padding:0; color:var(--primary-gold)">The Art Collection</span>
-            <h2>Global Heritage & Art</h2>
-            <p>Bringing the world's most prestigious museums to the palm of your hand. Our audio guides are designed to transform every visit into a profound cultural journey.</p>
+            <span class="tag" style="border:none; padding:0; color:var(--primary-gold)" data-i18n="secHeritageTag">The Art Collection</span>
+            <h2 data-i18n="secHeritageTitle">Global Heritage & Art</h2>
+            <p data-i18n="secHeritageDesc">Bringing the world's most prestigious museums to the palm of your hand. Our audio guides are designed to transform every visit into a profound cultural journey.</p>
         </div>
         <div class="portfolio-grid">
             <!-- National Gallery -->
             <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.nationalgallery.audioguide', '_blank')" style="cursor: pointer;">
                 <div class="card-image"><div class="app-icon-container"><i class="fas fa-palette"></i></div></div>
                 <div class="card-content">
-                    <span class="tag">Curated Tour</span>
-                    <h3>National Gallery Audio Guide</h3>
-                    <p>Immerse yourself in the National Gallery's masterpieces with professional narration. Discover the soul of European painting through expert-led stories.</p>
+                    <span class="tag" data-i18n="cardNatGalleryTag">Curated Tour</span>
+                    <h3 data-i18n="cardNatGalleryTitle">National Gallery Audio Guide</h3>
+                    <p data-i18n="cardNatGalleryDesc">Immerse yourself in the National Gallery's masterpieces with professional narration. Discover the soul of European painting through expert-led stories.</p>
                     <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
                 </div>
             </div>
@@ -205,9 +285,9 @@
             <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.metmuseum.audioguide', '_blank')" style="cursor: pointer;">
                 <div class="card-image"><div class="app-icon-container"><i class="fas fa-headphones"></i></div></div>
                 <div class="card-content">
-                    <span class="tag">Smart Planning</span>
-                    <h3>MET Museum Audio Guide</h3>
-                    <p>Unlock the secrets of The Met. Featuring high-fidelity audio, intelligent route planning, and interactive maps for a truly elite museum experience.</p>
+                    <span class="tag" data-i18n="cardMetTag">Smart Planning</span>
+                    <h3 data-i18n="cardMetTitle">MET Museum Audio Guide</h3>
+                    <p data-i18n="cardMetDesc">Unlock the secrets of The Met. Featuring high-fidelity audio, intelligent route planning, and interactive maps for a truly elite museum experience.</p>
                     <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
                 </div>
             </div>
@@ -215,9 +295,9 @@
             <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.louvre.elite', '_blank')" style="cursor: pointer;">
                 <div class="card-image"><div class="app-icon-container"><i class="fas fa-university"></i></div></div>
                 <div class="card-content">
-                    <span class="tag">Premium Guide</span>
-                    <h3>Louvre Museum Elite Tour</h3>
-                    <p>Navigate the world's grandest museum with ease. Includes complete audio commentary and curated thematic routes for the discerning traveler.</p>
+                    <span class="tag" data-i18n="cardLouvreTag">Premium Guide</span>
+                    <h3 data-i18n="cardLouvreTitle">Louvre Museum Elite Tour</h3>
+                    <p data-i18n="cardLouvreDesc">Navigate the world's grandest museum with ease. Includes complete audio commentary and curated thematic routes for the discerning traveler.</p>
                     <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
                 </div>
             </div>
@@ -225,30 +305,44 @@
             <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.britishmuseum.audioguide', '_blank')" style="cursor: pointer;">
                 <div class="card-image"><div class="app-icon-container"><i class="fas fa-landmark"></i></div></div>
                 <div class="card-content">
-                    <span class="tag">Historical Insight</span>
-                    <h3>British Museum Audio Guide</h3>
-                    <p>A comprehensive companion to the treasures of human history. Expert highlights and seamless navigation for the world-renowned London institution.</p>
+                    <span class="tag" data-i18n="cardBritishTag">Historical Insight</span>
+                    <h3 data-i18n="cardBritishTitle">British Museum Audio Guide</h3>
+                    <p data-i18n="cardBritishDesc">A comprehensive companion to the treasures of human history. Expert highlights and seamless navigation for the world-renowned London institution.</p>
                     <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 2: EdTech -->
+    <!-- Section 2: Certification & EdTech -->
     <section id="edtech" style="background-color: #f9f7f2;">
         <div class="category-intro">
-            <span class="tag" style="border:none; padding:0; color:var(--primary-gold)">The Knowledge Suite</span>
-            <h2>Intelligent Language Mastery</h2>
-            <p>Where AI meets pedagogy. Our language learning tools are engineered to accelerate fluency through personalized, high-performance training systems.</p>
+            <span class="tag" style="border:none; padding:0; color:var(--primary-gold)" data-i18n="secEdTechTag">The Knowledge Suite</span>
+            <h2 data-i18n="secEdTechTitle">Intelligent Certification & Learning</h2>
+            <p data-i18n="secEdTechDesc">Where AI meets pedagogy and professional accreditation. Our learning platforms and exam simulators are engineered to accelerate mastery through personalized, high-performance training systems.</p>
         </div>
         <div class="portfolio-grid">
+            <!-- CertMaster -->
+            <div class="portfolio-card" onclick="window.open('https://certmaster.vercel.app', '_blank')" style="cursor: pointer;">
+                <span class="featured-badge" data-i18n="cardCertMasterBadge">New Release</span>
+                <div class="card-image"><div class="app-icon-container"><i class="fas fa-award"></i></div></div>
+                <div class="card-content">
+                    <span class="tag" data-i18n="cardCertMasterTag">Certification Prep</span>
+                    <h3 data-i18n="cardCertMasterTitle">CertMaster: Exam Platform</h3>
+                    <p data-i18n="cardCertMasterDesc">Next-generation exam simulator for Microsoft Azure (AZ-104), Azure AI (AI-900 / AI-103), Cambridge English, and GEPT. Features timed mock tests, case studies, in-depth explanations, and weakness tracking.</p>
+                    <div class="web-app-badge">
+                        <i class="fas fa-globe"></i>
+                        <span data-i18n="launchWebApp">Launch Web App</span>
+                    </div>
+                </div>
+            </div>
             <!-- VocabSprint -->
             <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.chuyu.globalvocab', '_blank')" style="cursor: pointer;">
                 <div class="card-image"><div class="app-icon-container"><i class="fas fa-language"></i></div></div>
                 <div class="card-content">
-                    <span class="tag">AI Training</span>
-                    <h3>VocabSprint: CEFR Pro</h3>
-                    <p>The ultimate vocabulary accelerator. Mapped strictly to CEFR standards, using adaptive AI to ensure you master the right words at the right time.</p>
+                    <span class="tag" data-i18n="cardVocabSprintTag">AI Training</span>
+                    <h3 data-i18n="cardVocabSprintTitle">VocabSprint: CEFR Pro</h3>
+                    <p data-i18n="cardVocabSprintDesc">The ultimate vocabulary accelerator. Mapped strictly to CEFR standards, using adaptive AI to ensure you master the right words at the right time.</p>
                     <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
                 </div>
             </div>
@@ -256,9 +350,9 @@
             <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.zenith.english.mastery', '_blank')" style="cursor: pointer;">
                 <div class="card-image"><div class="app-icon-container"><i class="fas fa-graduation-cap"></i></div></div>
                 <div class="card-content">
-                    <span class="tag">Elite Academic</span>
-                    <h3>Zenith: Academic English</h3>
-                    <p>Designed for IELTS & TOEFL candidates. Master 5,000+ elite academic terms with AI-powered paraphrasing and collocation training.</p>
+                    <span class="tag" data-i18n="cardZenithTag">Elite Academic</span>
+                    <h3 data-i18n="cardZenithTitle">Zenith: Academic English</h3>
+                    <p data-i18n="cardZenithDesc">Designed for IELTS & TOEFL candidates. Master 5,000+ elite academic terms with AI-powered paraphrasing and collocation training.</p>
                     <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
                 </div>
             </div>
@@ -266,9 +360,9 @@
             <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.chuyu.vocabrpg.intermediate', '_blank')" style="cursor: pointer;">
                 <div class="card-image"><div class="app-icon-container"><i class="fas fa-dragon"></i></div></div>
                 <div class="card-content">
-                    <span class="tag">Gamified Learning</span>
-                    <h3>GEPT Oracle: Intermediate</h3>
-                    <p>Experience the perfect fusion of test preparation and RPG adventure. Turn your GEPT review into an engaging quest for excellence.</p>
+                    <span class="tag" data-i18n="cardGeptOracleTag">Gamified Learning</span>
+                    <h3 data-i18n="cardGeptOracleTitle">GEPT Oracle: Intermediate</h3>
+                    <p data-i18n="cardGeptOracleDesc">Experience the perfect fusion of test preparation and RPG adventure. Turn your GEPT review into an engaging quest for excellence.</p>
                     <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
                 </div>
             </div>
@@ -276,9 +370,9 @@
             <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.chuyu.vocabrpg', '_blank')" style="cursor: pointer;">
                 <div class="card-image"><div class="app-icon-container"><i class="fas fa-shield-alt"></i></div></div>
                 <div class="card-content">
-                    <span class="tag">Beginner Adventure</span>
-                    <h3>GEPT Elementary: Hero</h3>
-                    <p>An epic fantasy adventure designed for foundational learners. Transforming vocabulary memorization into a legendary heroic journey.</p>
+                    <span class="tag" data-i18n="cardGeptHeroTag">Beginner Adventure</span>
+                    <h3 data-i18n="cardGeptHeroTitle">GEPT Elementary: Hero</h3>
+                    <p data-i18n="cardGeptHeroDesc">An epic fantasy adventure designed for foundational learners. Transforming vocabulary memorization into a legendary heroic journey.</p>
                     <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
                 </div>
             </div>
@@ -288,18 +382,18 @@
     <!-- Section 3: Games -->
     <section id="games">
         <div class="category-intro">
-            <span class="tag" style="border:none; padding:0; color:var(--primary-gold)">The Play Studio</span>
-            <h2>Creative Interactive Games</h2>
-            <p>Pushing the boundaries of casual gaming. Our titles combine innovative mechanics with stunning visuals for an unforgettable interactive experience.</p>
+            <span class="tag" style="border:none; padding:0; color:var(--primary-gold)" data-i18n="secGamesTag">The Play Studio</span>
+            <h2 data-i18n="secGamesTitle">Creative Interactive Games</h2>
+            <p data-i18n="secGamesDesc">Pushing the boundaries of casual gaming. Our titles combine innovative mechanics with stunning visuals for an unforgettable interactive experience.</p>
         </div>
         <div class="portfolio-grid" style="justify-content: center;">
             <!-- AniDrop -->
             <div class="portfolio-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.chromablocks.cascade', '_blank')" style="cursor: pointer; max-width: 400px; margin: 0 auto;">
                 <div class="card-image"><div class="app-icon-container"><i class="fas fa-puzzle-piece"></i></div></div>
                 <div class="card-content">
-                    <span class="tag">Innovation</span>
-                    <h3>AniDrop: Zoo Block Blast</h3>
-                    <p>Experience the Reactive Gravity System. A logic puzzle where dynamic cascades and magical power-ups redefine the block-blasting genre.</p>
+                    <span class="tag" data-i18n="cardAniDropTag">Innovation</span>
+                    <h3 data-i18n="cardAniDropTitle">AniDrop: Zoo Block Blast</h3>
+                    <p data-i18n="cardAniDropDesc">Experience the Reactive Gravity System. A logic puzzle where dynamic cascades and magical power-ups redefine the block-blasting genre.</p>
                     <img class="google-play-badge" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/>
                 </div>
             </div>
@@ -307,11 +401,170 @@
     </section>
 
     <footer>
-        <p>© 2026 Magic! Design Studio. <span style="color:var(--primary-gold)">Crafted for Excellence.</span></p>
+        <p data-i18n="footerCopyright">© 2026 Magic! Design Studio. <span style="color:var(--primary-gold)">Crafted for Excellence.</span></p>
     </footer>
 
     <script>
+        const i18nData = {
+            en: {
+                pageTitle: "Magic! Studio | Elegance in Digital Craftsmanship",
+                getInTouch: "Get in Touch",
+                heroTitle: "Define Your<span>Digital Legacy</span>",
+                heroSubtitle: "Magic! Studio blends artistic vision with technical precision. We create bespoke digital experiences that don't just solve problems—they tell a story of excellence.",
+                viewMasterpieces: "View Masterpieces",
+                
+                secHeritageTag: "The Art Collection",
+                secHeritageTitle: "Global Heritage & Art",
+                secHeritageDesc: "Bringing the world's most prestigious museums to the palm of your hand. Our audio guides are designed to transform every visit into a profound cultural journey.",
+                
+                cardNatGalleryTag: "Curated Tour",
+                cardNatGalleryTitle: "National Gallery Audio Guide",
+                cardNatGalleryDesc: "Immerse yourself in the National Gallery's masterpieces with professional narration. Discover the soul of European painting through expert-led stories.",
+                
+                cardMetTag: "Smart Planning",
+                cardMetTitle: "MET Museum Audio Guide",
+                cardMetDesc: "Unlock the secrets of The Met. Featuring high-fidelity audio, intelligent route planning, and interactive maps for a truly elite museum experience.",
+                
+                cardLouvreTag: "Premium Guide",
+                cardLouvreTitle: "Louvre Museum Elite Tour",
+                cardLouvreDesc: "Navigate the world's grandest museum with ease. Includes complete audio commentary and curated thematic routes for the discerning traveler.",
+                
+                cardBritishTag: "Historical Insight",
+                cardBritishTitle: "British Museum Audio Guide",
+                cardBritishDesc: "A comprehensive companion to the treasures of human history. Expert highlights and seamless navigation for the world-renowned London institution.",
+                
+                secEdTechTag: "The Knowledge Suite",
+                secEdTechTitle: "Intelligent Certification & Learning",
+                secEdTechDesc: "Where AI meets pedagogy and professional accreditation. Our learning platforms and exam simulators are engineered to accelerate mastery through personalized, high-performance training systems.",
+                
+                cardCertMasterBadge: "New Release",
+                cardCertMasterTag: "Certification Prep",
+                cardCertMasterTitle: "CertMaster: Exam Platform",
+                cardCertMasterDesc: "Next-generation exam simulator for Microsoft Azure (AZ-104), Azure AI (AI-900 / AI-103), Cambridge English, and GEPT. Features timed mock tests, case studies, in-depth explanations, and weakness tracking.",
+                launchWebApp: "Launch Web App",
+                
+                cardVocabSprintTag: "AI Training",
+                cardVocabSprintTitle: "VocabSprint: CEFR Pro",
+                cardVocabSprintDesc: "The ultimate vocabulary accelerator. Mapped strictly to CEFR standards, using adaptive AI to ensure you master the right words at the right time.",
+                
+                cardZenithTag: "Elite Academic",
+                cardZenithTitle: "Zenith: Academic English",
+                cardZenithDesc: "Designed for IELTS & TOEFL candidates. Master 5,000+ elite academic terms with AI-powered paraphrasing and collocation training.",
+                
+                cardGeptOracleTag: "Gamified Learning",
+                cardGeptOracleTitle: "GEPT Oracle: Intermediate",
+                cardGeptOracleDesc: "Experience the perfect fusion of test preparation and RPG adventure. Turn your GEPT review into an engaging quest for excellence.",
+                
+                cardGeptHeroTag: "Beginner Adventure",
+                cardGeptHeroTitle: "GEPT Elementary: Hero",
+                cardGeptHeroDesc: "An epic fantasy adventure designed for foundational learners. Transforming vocabulary memorization into a legendary heroic journey.",
+                
+                secGamesTag: "The Play Studio",
+                secGamesTitle: "Creative Interactive Games",
+                secGamesDesc: "Pushing the boundaries of casual gaming. Our titles combine innovative mechanics with stunning visuals for an unforgettable interactive experience.",
+                
+                cardAniDropTag: "Innovation",
+                cardAniDropTitle: "AniDrop: Zoo Block Blast",
+                cardAniDropDesc: "Experience the Reactive Gravity System. A logic puzzle where dynamic cascades and magical power-ups redefine the block-blasting genre.",
+                
+                footerCopyright: "© 2026 Magic! Design Studio. <span style=\"color:var(--primary-gold)\">Crafted for Excellence.</span>"
+            },
+            zh: {
+                pageTitle: "Magic! Studio 數位設計工作室 | 極致工藝與數位創新",
+                getInTouch: "聯絡我們",
+                heroTitle: "鑄就您的<span>數位傳奇</span>",
+                heroSubtitle: "Magic! Studio 融合藝術美學與卓越工程技術。我們打造頂級的數位產品與沉浸體驗，不僅解決核心需求，更傳遞非凡價值。",
+                viewMasterpieces: "鑑賞旗艦作品",
+                
+                secHeritageTag: "世界殿堂典藏",
+                secHeritageTitle: "全球文化遺產與藝術導覽",
+                secHeritageDesc: "將世界頂級博物館珍品收於掌心。我們的語音導覽專為深度文化探索打造，讓每一次參訪都成為震撼心靈的沉浸之旅。",
+                
+                cardNatGalleryTag: "專業策展導讀",
+                cardNatGalleryTitle: "國家美術館語音導覽",
+                cardNatGalleryDesc: "在專業大師級旁白引導下，沉浸於倫敦國家美術館的稀世館藏。深入探索歐洲經典畫作背後的靈魂故事。",
+                
+                cardMetTag: "智慧參訪規劃",
+                cardMetTitle: "大都會藝術博物館導覽 (MET)",
+                cardMetDesc: "解鎖紐約大都會博物館的萬千珍寶。具備高音質語音、智慧路線推薦與互動地圖，尊享頂級參訪體驗。",
+                
+                cardLouvreTag: "尊榮隨身領隊",
+                cardLouvreTitle: "羅浮宮博物館尊榮導覽",
+                cardLouvreDesc: "輕鬆漫步世界最大藝術宮殿。提供完整的語音解說、重點文物導引與精心規劃的主題參觀動線。",
+                
+                cardBritishTag: "跨時代歷史巡禮",
+                cardBritishTitle: "大英博物館語音導覽",
+                cardBritishDesc: "探索人類文明瑰寶的必備指南。涵蓋全館重點文物深度解析與無縫室內導引，縱覽跨越萬年的歷史盛宴。",
+                
+                secEdTechTag: "智慧研習殿堂",
+                secEdTechTitle: "智慧認證研習與語言培訓",
+                secEdTechDesc: "AI 智能科技與教育心理學的完美結合。專為專業技能檢定與語言進階打造，以高效率培訓系統加速學習成效。",
+                
+                cardCertMasterBadge: "旗艦新品",
+                cardCertMasterTag: "專業認證備考平台",
+                cardCertMasterTitle: "CertMaster 國際認證研習學院",
+                cardCertMasterDesc: "新一代微軟 Azure（AZ-104）、Azure AI（AI-900 / AI-103）、劍橋英語與全民英檢考綱模擬平台。具備全真計時測驗、情境案例分析、逐題精闢解析與雲端弱點追蹤。",
+                launchWebApp: "啟動 Web 平台",
+                
+                cardVocabSprintTag: "AI 智能強化",
+                cardVocabSprintTitle: "VocabSprint: CEFR Pro",
+                cardVocabSprintDesc: "高效單字加速器。嚴格對應 CEFR 國際歐框標準，運用自適應演算法確保在最佳時機精準掌握關鍵字彙。",
+                
+                cardZenithTag: "頂尖學術英語",
+                cardZenithTitle: "Zenith: Academic English",
+                cardZenithDesc: "專為雅思（IELTS）與托福（TOEFL）考生研發。全面掌握 5,000+ 核心學術詞彙，搭配 AI 釋義與語料搭配詞練習。",
+                
+                cardGeptOracleTag: "遊戲化學習",
+                cardGeptOracleTitle: "全民英檢中級：Oracle 冒險記",
+                cardGeptOracleDesc: "檢定備考與 RPG 角色扮演冒險的完美交融。將枯燥的英檢複習化為充滿驚喜與成就感的英雄史詩任務。",
+                
+                cardGeptHeroTag: "初學者啟蒙",
+                cardGeptHeroTitle: "全民英檢初級：Hero 冒險家",
+                cardGeptHeroDesc: "為初階英語學習者專屬設計的奇幻冒險。將單字記憶徹底轉化為熱血傳奇旅程，打下扎實基礎。",
+                
+                secGamesTag: "創意互動工坊",
+                secGamesTitle: "創意遊戲與互動娛樂",
+                secGamesDesc: "打破休閒遊戲的常規界限。我們的作品結合創新物理機制與精美視覺效果，帶來極致流暢且難忘的互動體驗。",
+                
+                cardAniDropTag: "重力連鎖機制",
+                cardAniDropTitle: "AniDrop: Zoo Block Blast",
+                cardAniDropDesc: "體驗獨創的反饋重力引擎（Reactive Gravity System）。動態掉落連鎖與神奇道具，顛覆消除方塊遊戲的全新玩法。",
+                
+                footerCopyright: "© 2026 Magic! Design Studio. <span style=\"color:var(--primary-gold)\">精工細作，追求卓越。</span>"
+            }
+        };
+
+        function setLanguage(lang) {
+            if (!i18nData[lang]) return;
+            localStorage.setItem('magic_studio_lang', lang);
+            document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            if (i18nData[lang].pageTitle) {
+                document.title = i18nData[lang].pageTitle;
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18nData[lang] && i18nData[lang][key]) {
+                    el.innerHTML = i18nData[lang][key];
+                }
+            });
+        }
+
         document.addEventListener("DOMContentLoaded", () => {
+            const savedLang = localStorage.getItem('magic_studio_lang');
+            const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+            const defaultLang = savedLang || (browserLang.startsWith('zh') ? 'zh' : 'en');
+            setLanguage(defaultLang);
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
